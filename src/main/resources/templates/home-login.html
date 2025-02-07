@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>홈</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <style>
+        .container {
+        max-width: 560px;
+        }
+    </style>
+</head>
+<body class="d-flex justify-content-center align-items-center vh-100">
+<div class="container">
+<div class="container text-center">
+    <h2 class="mb-4">환영합니다!</h2>
+
+    <div th:if="${member.grade.name() != 'ADMIN'}" class="mb-4">
+        <h3 class="mb-3">회원 메뉴</h3>
+        <div class="d-grid gap-2">
+            <a href="/products" class="btn btn-outline-primary btn-lg">상품 목록</a>
+            <a href="/orders" class="btn btn-outline-primary btn-lg">주문하기</a>
+            <a href="/orders/my" class="btn btn-outline-primary btn-lg">내 주문 목록</a>
+            <a href="/members/my" class="btn btn-outline-primary btn-lg">내 정보 보기</a>
+        </div>
+    </div>
+
+    <div th:if="${member.grade.name() == 'ADMIN'}">
+        <h3 class="mb-3">관리자 메뉴</h3>
+        <div class="d-grid gap-2">
+            <a href="/admin/members" class="btn btn-outline-dark btn-lg">회원 목록 조회</a>
+            <a href="/admin/orders" class="btn btn-outline-dark btn-lg">주문 목록 조회</a>
+            <a href="/admin/products" class="btn btn-outline-dark btn-lg">상품 등록</a>
+        </div>
+    </div>
+
+    <form action="/logout" th:action="@{/logout}" method="post" class="mt-4">
+        <button type="submit" class="btn btn-danger btn-lg w-100">로그아웃</button>
+    </form>
+</div>
+</div>
+
+</body>
+</html>

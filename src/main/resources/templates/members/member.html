@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>회원 정보</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}">
+    <style>
+        .container {
+        max-width: 560px;
+        }
+    </style>
+</head>
+<body class="d-flex justify-content-center align-items-center vh-100">
+<div class="container">
+<div class="container text-center">
+    <h2 th:if="${param.isNew}" class="mb-3 text-success" th:text="'회원가입 성공!'"></h2>
+    <h2 class="mb-4">회원 정보</h2>
+
+    <p class="fw-bold">아이디: <span th:text="${member.loginId}"></span></p>
+    <p class="fw-bold">이름: <span th:text="${member.name}"></span></p>
+    <p class="fw-bold">회원 등급: <span th:text="${member.grade}"></span></p>
+
+    <div class="mt-4">
+        <a href="/" class="btn btn-secondary btn-lg">홈으로 이동</a>
+    </div>
+</div>
+</div>
+</body>
+</html>
